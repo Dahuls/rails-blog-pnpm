@@ -1,0 +1,30 @@
+<h1>Mini Blog</h1>
+<p>Ruby app with pnpm successfully deployed</p>
+
+<%= form_with model: @note, url: "/notes", local: true do |form| %>
+  <div>
+    <%= form.label :content, "Note" %><br>
+    <%= form.text_field :content, maxlength: 100 %>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <%= form.submit "Save Note" %>
+  </div>
+<% end %>
+
+<hr>
+
+<h2> Saved Notes</h2>
+
+<% if @notes.any? %>
+  <ul>
+    <% @notes.each do |note| %>
+      <li>
+        <strong><%= note.content %></strong>
+        <small>(<%= note.created_st.strftime("%Y-%m-%d %H:%M") %>)</small>
+      </li>
+    <% end %>
+   </ul>
+<% else %>
+  <p> No notes yet.</p>
+<% end %>
