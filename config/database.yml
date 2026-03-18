@@ -8,8 +8,8 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%- ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: bloguser
-  password: blogpassword
+  #username: bloguser
+  #password: blogpassword
   host: 127.0.0.1
 
 development:
