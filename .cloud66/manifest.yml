@@ -1,0 +1,8 @@
+rails:
+  configuration:
+    ruby_version: 3.4.7
+  servers:
+  - server:
+      unique_name: firstserver
+  - server:
+      unique_name: secondserver
