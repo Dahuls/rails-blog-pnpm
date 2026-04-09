@@ -21,9 +21,33 @@ test:
   database: blog_test
 
 production:
-  <<: *default
-  database: blog_production
-
+  primary:
+    <<: *default
+    database: <%= ENV["POSTGRESQL_DEFAULT_DATABASE"] %>
+    username: <%= ENV["POSTGRESQL_DEFAULT_USERNAME"] %>
+    password: <%= ENV["POSTGRESQL_DEFAULT_PASSWORD"] %>
+    host: <%= ENV["POSTGRESQL_DEFAULT_ADDRESS"] %>
+  cache:
+    <<: *default
+    database: <%= ENV["POSTGRESQL_SOLID_DATABASE"] %>_cache
+    username: <%= ENV["POSTGRESQL_SOLID_USERNAME"] %>
+    password: <%= ENV["POSTGRESQL_SOLID_PASSWORD"] %>
+    host: <%= ENV["POSTGRESQL_SOLID_ADDRESS"] %>
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *default
+    database: <%= ENV["POSTGRESQL_SOLID_DATABASE"] %>_queue
+    username: <%= ENV["POSTGRESQL_SOLID_USERNAME"] %>
+    password: <%= ENV["POSTGRESQL_SOLID_PASSWORD"] %>
+    host: <%= ENV["POSTGRESQL_SOLID_ADDRESS"] %>
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *default
+    database: <%= ENV["POSTGRESQL_SOLID_DATABASE"] %>_cable
+    username: <%= ENV["POSTGRESQL_SOLID_USERNAME"] %>
+    password: <%= ENV["POSTGRESQL_SOLID_PASSWORD"] %>
+    host: <%= ENV["POSTGRESQL_SOLID_ADDRESS"] %>
+    migrations_paths: db/cable_migrate
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or prod
