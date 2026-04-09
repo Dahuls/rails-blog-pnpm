@@ -1,14 +1,13 @@
 rails:
   configuration:
     ruby_version: 3.4.7
-postgresql:
+mysql:
   groups:
     default:
       servers:
       - server:
           unique_name: dbx1
       configuration:
-        version: '18'
         username: "<%= ENV['POSTGRESQL_DEFAULT_USERNAME']%>"
         password: "<%= ENV['POSTGRESQL_DEFAULT_PASSWORD']%>"
         database: "<%= ENV['POSTGRESQL_DEFAULT_DATABASE']%>"
@@ -20,7 +19,6 @@ postgresql:
       - server:
           unique_name: dbs1
       configuration:
-        version: '18'
         username: "<%= ENV['POSTGRESQL_SOLID_USERNAME']%>"
         password: "<%= ENV['POSTGRESQL_SOLID_PASSWORD']%>"
         database: "<%= ENV['POSTGRESQL_SOLID_DATABASE']%>"
