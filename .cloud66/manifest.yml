@@ -6,11 +6,24 @@ postgresql:
     default:
       servers:
       - server:
-        configuration:
-          version: '18'
-    mars:
+          unique_name: dbx1
+      configuration:
+        version: '18'
+        username: "<%= ENV['POSTGRESQL_DEFAULT_USERNAME']%>"
+        password: "<%= ENV['POSTGRESQL_DEFAULT_PASSWORD']%>"
+        database: "<%= ENV['POSTGRESQL_DEFAULT_DATABASE']%>"
+        encoding: unicode
+        tamper_with_yml: false
+        operating_system: ubuntu2404
+    solid:
       servers:
       - server:
-        configuration:
-          version: '18'
-      
+          unique_name: dbs1
+      configuration:
+        version: '18'
+        username: "<%= ENV['POSTGRESQL_SOLID_USERNAME']%>"
+        password: "<%= ENV['POSTGRESQL_SOLID_PASSWORD']%>"
+        database: "<%= ENV['POSTGRESQL_SOLID_DATABASE']%>"
+        encoding: unicode
+        tamper_with_yml: false
+        operating_system: ubuntu2404
